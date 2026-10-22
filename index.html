@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b0c">
+  <meta name="description" content="给药琳颖的一份轻轻的祝福。">
+  <title>给药琳颖的一点祝福</title>
+  <style>
+    :root { color-scheme: dark; --night: #080b0c; --ink: #eeeae0; --muted: #a6a49b; --gold: #e7c783; --line: rgba(231,199,131,.2); }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; overflow-x: hidden; color: var(--ink); background: radial-gradient(ellipse at 50% 38%, #17201d 0%, #0d1212 43%, var(--night) 78%); font-family: "Aptos", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif; }
+    .sky { position: fixed; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+    .sky::before, .sky::after { position: absolute; inset: 0; content: ""; background-repeat: no-repeat; }
+    .sky::before { opacity: .72; background-image: radial-gradient(1px 1px at 7% 14%, #f4e9ca 99%, transparent), radial-gradient(1px 1px at 19% 37%, #d7d9d0 99%, transparent), radial-gradient(1px 1px at 31% 11%, #f4e9ca 99%, transparent), radial-gradient(1px 1px at 42% 28%, #d7d9d0 99%, transparent), radial-gradient(1px 1px at 58% 12%, #f4e9ca 99%, transparent), radial-gradient(1px 1px at 71% 31%, #d7d9d0 99%, transparent), radial-gradient(1px 1px at 83% 16%, #f4e9ca 99%, transparent), radial-gradient(1px 1px at 94% 42%, #d7d9d0 99%, transparent), radial-gradient(1px 1px at 13% 71%, #d7d9d0 99%, transparent), radial-gradient(1px 1px at 88% 77%, #f4e9ca 99%, transparent); animation: stars-drift 24s ease-in-out infinite alternate; }
+    .sky::after { opacity: .35; background-image: radial-gradient(2px 2px at 25% 21%, #f4e9ca 99%, transparent), radial-gradient(2px 2px at 76% 18%, #f4e9ca 99%, transparent), radial-gradient(2px 2px at 91% 59%, #f4e9ca 99%, transparent); animation: twinkle 5s ease-in-out infinite alternate; }
+    .firefly { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #f1d68e; box-shadow: 0 0 9px 3px rgba(241,214,142,.4); animation: drift 7s ease-in-out infinite alternate; }
+    .firefly.one { top: 27%; left: 14%; }
+    .firefly.two { top: 62%; right: 13%; width: 4px; height: 4px; animation-delay: -3s; }
+    .firefly.three { top: 77%; left: 23%; width: 3px; height: 3px; animation-delay: -5s; }
+    main { position: relative; z-index: 1; display: flex; min-height: 100svh; width: min(100% - 36px, 660px); flex-direction: column; margin: 0 auto; padding: 34px 0 26px; }
+    .topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13px; }
+    .signature { color: var(--gold); font-weight: 550; }
+    .note { max-width: 220px; text-align: right; line-height: 1.7; }
+    .content { display: flex; flex: 1; flex-direction: column; justify-content: center; padding: 42px 8px; text-align: center; }
+    .eyebrow { margin: 0 0 18px; color: var(--gold); font-size: 13px; letter-spacing: .12em; }
+    h1 { margin: 0; font-family: "Georgia", "Songti SC", "SimSun", serif; font-size: clamp(28px, 8vw, 40px); font-weight: 500; line-height: 1.45; }
+    .wish { display: grid; min-height: 132px; place-items: center; padding: 24px 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .wish p { max-width: 500px; margin: 0; color: #e8e4d9; font-family: "Georgia", "Songti SC", "SimSun", serif; font-size: clamp(18px, 5vw, 22px); line-height: 1.9; }
+    .wish.is-changing p { animation: arrive .42s ease both; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes twinkle { to { opacity: .8; } }
+    @keyframes stars-drift { to { transform: translate3d(-8px, 6px, 0); } }
+    @keyframes drift { to { transform: translate(12px, -14px); opacity: .5; } }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 27px; }
+    button { min-height: 46px; padding: 0 17px; border: 1px solid rgba(231,199,131,.58); border-radius: 3px; font: inherit; font-size: 14px; cursor: pointer; transition: background-color .18s ease, border-color .18s ease; }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    .primary { color: #161713; background: var(--gold); }
+    .primary:hover { background: #f0d89f; }
+    .secondary { color: var(--gold); background: transparent; }
+    .secondary:hover { border-color: var(--gold); background: rgba(231,199,131,.08); }
+    .footer { margin: 27px 0 0; color: var(--muted); font-size: 12px; line-height: 1.8; text-align: center; }
+    .burst-layer { position: fixed; z-index: 3; inset: 0; overflow: hidden; pointer-events: none; }
+    .burst-message { position: absolute; width: max-content; max-width: min(84vw, 330px); padding: 9px 13px; border: 1px solid rgba(231,199,131,.34); border-radius: 4px; color: #f3e8cb; background: rgba(10,14,13,.88); font-size: 14px; line-height: 1.65; text-align: center; box-shadow: 0 0 20px rgba(231,199,131,.08); animation: float-up 2.4s ease-out forwards; }
+    @keyframes float-up { 0% { opacity: 0; transform: translateY(18px) scale(.96); } 12% { opacity: 1; } 78% { opacity: 1; } 100% { opacity: 0; transform: translateY(-44px) scale(1.02); } }
+    @media (max-width: 480px) { main { width: min(100% - 32px, 660px); padding: 24px 0 18px; } .topline { font-size: 11px; } .note { max-width: 190px; } .content { padding: 35px 0; } .wish { min-height: 145px; padding-inline: 12px; } .actions { gap: 8px; margin-top: 23px; } button { min-height: 44px; padding-inline: 12px; font-size: 13px; } .burst-message { font-size: 13px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="burst-layer" id="burst-layer" aria-hidden="true"></div>
+  <main>
+    <header class="topline"><span class="signature">给药琳颖的一点心意</span><span class="note">鉴于我的破烂审美和语文水平<br>不要嘲笑我</span></header>
+    <div class="sky" aria-hidden="true"><span class="firefly one"></span><span class="firefly two"></span><span class="firefly three"></span></div>
+    <section class="content" aria-labelledby="title">
+      <p class="eyebrow">给你的一点祝福</p>
+      <h1 id="title">药琳颖，愿你心里有光</h1>
+      <div class="wish" aria-live="polite" aria-atomic="true"><p id="wish-text">愿今晚有一盏小灯，替你留住好心情。</p></div>
+      <div class="actions">
+        <button class="primary" id="next-wish" type="button">再读一句祝福</button>
+        <button class="primary" id="blessing-burst" type="button">祝福20连</button>
+        <button class="secondary" id="share-wish" type="button">分享这份祝福</button>
+      </div>
+      <p class="footer" id="status" aria-live="polite">愿每个平常的日子，都有一点温柔微光。</p>
+    </section>
+  </main>
+  <script>
+    const wishes = [
+      "愿今晚有一盏小灯，替你留住好心情。",
+      "愿你喜欢的歌刚好响起，喜欢的零食刚好在手边。",
+      "愿窗外的云很好看，今天的你也有好好休息。",
+      "希望今天的烦恼都小小的，快乐都能多一点点。",
+      "愿你想做的事都慢慢有进展，想见的人也常常见面。",
+      "送你一颗想象中的糖：愿今天甜一点，轻松一点。",
+      "愿你被好天气、好消息和可爱的小事围绕。",
+      "不管今天忙不忙，都希望你记得留一点时间给自己。",
+      "愿接下来的日子里，有很多普通却闪闪发亮的瞬间。",
+      "希望你今天能遇到一个小惊喜，然后开心好一会儿。",
+      "愿喜欢的事情一直陪着你，新的快乐也正慢慢靠近。",
+      "今天也为你许个小愿望：吃得香，睡得好，笑得自在。"
+    ];
+    const wishText = document.querySelector("#wish-text");
+    const wishCard = document.querySelector(".wish");
+    const status = document.querySelector("#status");
+    const burstLayer = document.querySelector("#burst-layer");
+    const burstButton = document.querySelector("#blessing-burst");
+    const burstWishes = [
+      "愿今晚的星光，替你留住一点轻松。", "愿喜欢的歌，刚好在此刻响起。", "愿今天有一点甜，也有一点闲。", "愿窗外的风，轻轻吹走小烦恼。", "愿你总能遇见可爱又温柔的事。",
+      "愿每个普通日子，都有小小惊喜。", "愿你的笑容，比星星还要闪亮。", "愿好心情像萤火虫一样，悄悄靠近。", "愿想吃的美味，今天就能尝到。", "愿明天醒来，又是清爽的新一天。",
+      "愿你喜欢的事情，都有时间去做。", "愿好运在转角，给你一个小拥抱。", "愿每一阵晚风，都带来轻松自在。", "愿你今天听到一句真心的夸奖。", "愿快乐不用很大，一点点就很好。",
+      "愿所有可爱的小事，都刚好被你发现。", "愿你被理解，也被温柔地惦记。", "愿今晚睡个好觉，梦里也有星光。", "愿喜欢的人和事，都离你近一点。", "愿接下来的每一天，都有值得期待的事。"
+    ];
+    let remaining = [];
+    let currentWish = wishText.textContent;
+
+    function refillWishes() {
+      remaining = wishes.filter((wish) => wish !== currentWish);
+      for (let index = remaining.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [remaining[index], remaining[swapIndex]] = [remaining[swapIndex], remaining[index]];
+      }
+    }
+
+    document.querySelector("#next-wish").addEventListener("click", () => {
+      if (remaining.length === 0) refillWishes();
+      currentWish = remaining.pop();
+      wishCard.classList.remove("is-changing");
+      void wishCard.offsetWidth;
+      wishText.textContent = currentWish;
+      wishCard.classList.add("is-changing");
+      status.textContent = "这份小小的祝福，送给你。";
+    });
+
+    burstButton.addEventListener("click", () => {
+      if (burstButton.disabled) return;
+      burstButton.disabled = true;
+      status.textContent = "正在为你送上 20 份小小的祝福。";
+      burstWishes.forEach((wish, index) => {
+        window.setTimeout(() => {
+          const message = document.createElement("span");
+          message.className = "burst-message";
+          message.textContent = wish;
+          message.style.left = `${5 + Math.random() * 55}%`;
+          message.style.top = `${18 + Math.random() * 65}%`;
+          message.style.animationDelay = `${Math.random() * 0.18}s`;
+          burstLayer.append(message);
+          window.setTimeout(() => message.remove(), 2700);
+        }, index * 170);
+      });
+      window.setTimeout(() => {
+        burstButton.disabled = false;
+        status.textContent = "20 份祝福都送到啦，愿你今晚有好梦。";
+      }, burstWishes.length * 170 + 2500);
+    });
+
+    document.querySelector("#share-wish").addEventListener("click", async () => {
+      const shareText = `${currentWish}\n\n给药琳颖的一点祝福`;
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: "给药琳颖的一点祝福", text: shareText, url: location.href });
+          status.textContent = "祝福已经准备好分享啦。";
+        } else {
+          await navigator.clipboard.writeText(`${shareText}\n${location.href}`);
+          status.textContent = "祝福和网页链接已复制。";
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") status.textContent = "暂时无法分享，请直接把网页链接发给朋友。";
+      }
+    });
+  </script>
+</body>
+</html>
